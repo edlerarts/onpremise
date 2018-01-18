@@ -60,7 +60,7 @@ services:
       context: .
       dockerfile: ./caddy/Dockerfile
     depends_on:
-      - django
+      - web
     volumes:
       - caddy:/root/.caddy
     ports:
