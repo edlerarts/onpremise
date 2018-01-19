@@ -8,8 +8,8 @@
 
 version: '2'
 
-volumes:
-  caddy: {}
+#volumes:
+#  caddy: {}
 
 services:
   base:
@@ -18,7 +18,7 @@ services:
     environment:
       # Run `docker-compose run web config generate-secret-key`
       # to get the SENTRY_SECRET_KEY value.
-      # SENTRY_SECRET_KEY: ''
+      SENTRY_SECRET_KEY: '@0)urh)mrbz_eza&i4u1#!!v-vw!sv5_7d=-qbk2(gnvsb=n%u'
       SENTRY_MEMCACHED_HOST: memcached
       SENTRY_REDIS_HOST: redis
       SENTRY_POSTGRES_HOST: postgres
@@ -55,17 +55,17 @@ services:
     ports:
       - '9000:9000'
 
-  caddy:
-    build:
-      context: .
-      dockerfile: ./caddy/Dockerfile
-    depends_on:
-      - web
-    volumes:
-      - caddy:/root/.caddy
-    ports:
-      - "0.0.0.0:80:80"
-      - "0.0.0.0:443:443"
+#  caddy:
+#    build:
+#      context: .
+#      dockerfile: ./caddy/Dockerfile
+#    depends_on:
+#      - web
+#    volumes:
+#      - caddy:/root/.caddy
+#    ports:
+#      - "0.0.0.0:80:80"
+#      - "0.0.0.0:443:443"
 
   cron:
     restart: unless-stopped
